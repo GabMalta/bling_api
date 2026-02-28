@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bling_api"
+version = "0.1.0"
+description = "Cliente Python para integração com a API v3 da Bling"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+    "pydantic>=2.0.0",
+    "requests_policy @ git+https://github.com/GabMalta/requests_policy",
+    "bling_utils @ git+https://github.com/GabMalta/bling_utils",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["bling_api*"]
+
+[tool.setuptools.package-data]
+bling_api = ["src/jsons/*.json", "src/tokens/*.txt"]
