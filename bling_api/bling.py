@@ -265,3 +265,15 @@ class BlingApi:
     def create_link_with_store(self, vinculo: ProdutoLojaSchema):
         payload = vinculo.model_dump_json()
         return self._request_json("post", "produtos/lojas", data=payload)
+
+    def create_estoque(self, payload: dict):
+        return self._request_json("post", "estoques", json=payload)
+
+    def get_depositos(self):
+        return self._request_json("get", "depositos")["data"]
+
+    def get_nf(self, nf_id: int) -> dict:
+        return self._request_json("get", f"nfe/{nf_id}")
+
+    def put_nf(self, nf_id: int, payload: dict) -> dict:
+        return self._request_json("put", f"nfe/{nf_id}", json=payload)
