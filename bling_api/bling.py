@@ -12,7 +12,7 @@ from requests_policy.http import http
 
 
 class BlingApi:
-    BASE_URL = "https://www.bling.com.br/Api/v3"
+    BASE_URL = "https://api.bling.com.br/Api/v3"
     TOKEN_URL = f"{BASE_URL}/oauth/token"
 
     def __init__(self, client_id: str = "", client_secret: str = ""):
@@ -57,6 +57,7 @@ class BlingApi:
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "1.0",
             "Authorization": f"Basic {self.credential_base64}",
+            "enable-jwt": "1",
         }
 
     def _build_url(self, path: str) -> str:
